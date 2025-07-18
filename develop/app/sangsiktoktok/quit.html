@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>상식톡톡 | 계정 및 데이터 삭제 요청</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 40px auto; }
+    .info { background: #f6f6f6; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+    .btn { padding: 12px 22px; background: #d62828; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 1.1em; }
+    .btn:disabled { background: #ccc; }
+  </style>
+</head>
+<body>
+  <h2>상식톡톡 계정 및 데이터 삭제 요청</h2>
+  <div class="info">
+    <p>
+      <b>앱명:</b> 상식톡톡<br>
+      <b>회사명:</b> jihonet<br>
+      <b>문의:</b> app.jhstudio@gmail.com<br><br>
+      <b>계정 삭제 안내:</b><br>
+      1. 아래에서 로그인 후, [계정 삭제] 버튼을 클릭하면 즉시 탈퇴됩니다.<br>
+      2. 탈퇴 즉시 모든 계정정보 및 데이터가 삭제됩니다.<br>
+      3. 일부 정보는 법적 요구에 따라 30일간 임시보관 후 완전 삭제될 수 있습니다.<br>
+      <br>
+      <span style="color:#c00;">※ 로그인 정보는 서버로만 전송되며, 브라우저에 임시로만 저장됩니다.</span>
+    </p>
+  </div>
+  <div>
+    <label>아이디: <input type="text" id="username"></label><br><br>
+    <label>비밀번호: <input type="password" id="password"></label><br><br>
+    <button class="btn" onclick="login()">로그인</button>
+    <span id="loginStatus"></span>
+  </div>
+  <hr>
+  <div>
+    <button class="btn" id="deleteBtn" onclick="deleteAccount()" disabled>계정 삭제</button>
+    <span id="deleteStatus"></span>
+  </div>
+  <hr>
+  <div style="font-size:0.97em;color:#666;">
+    <b>데이터 보관/삭제 정책:</b> 계정 삭제 즉시 모든 데이터 삭제, 일부 법적 요구 데이터 30일간 보관 후 삭제<br>
+    <b>문의:</b> app.jhstudio@gmail.com
+  </div>
+  <script>
+    let jwtToken = "";
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if(!username || !password) {
+        alert('아이디와 비밀번호를 입력하세요.');
+        return;
+      }
+      fetch("http://49.247.19.178:46764/api/member/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.success && data.data) {
+          jwtToken = data.data; // JWT 저장
+          document.getElementById('loginStatus').innerHTML = "<span style='color:green'>로그인 성공</span>";
+          document.getElementById('deleteBtn').disabled = false;
+        } else {
+          document.getElementById('loginStatus').innerHTML = "<span style='color:red'>로그인 실패</span>";
+          document.getElementById('deleteBtn').disabled = true;
+        }
+      })
+      .catch(err => {
+        document.getElementById('loginStatus').innerHTML = "<span style='color:red'>로그인 에러</span>";
+        document.getElementById('deleteBtn').disabled = true;
+      });
+    }
+
+    function deleteAccount() {
+      if(!jwtToken) {
+        alert("로그인 후 이용하세요.");
+        return;
+      }
+      if (!confirm('정말로 계정을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) return;
+      fetch("http://49.247.19.178:46764/api/member", {
+        method: "DELETE",
+        headers: { "Authorization": "Bearer " + jwtToken }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.success) {
+          document.getElementById('deleteStatus').innerHTML = "<span style='color:green'>계정이 삭제되었습니다.</span>";
+        } else {
+          document.getElementById('deleteStatus').innerHTML = "<span style='color:red'>계정 삭제 실패: " + (data.message || '') + "</span>";
+        }
+      })
+      .catch(err => {
+        document.getElementByI
