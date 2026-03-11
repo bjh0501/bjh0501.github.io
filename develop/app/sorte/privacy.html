@@ -1,1 +1,434 @@
-test
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>개인정보처리방침 - SORTE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0f0f10;
+      --surface: #18181b;
+      --border: #2a2a2f;
+      --text: #e8e8ec;
+      --text-muted: #8a8a9a;
+      --accent: #c9a96e;
+      --accent-dim: rgba(201,169,110,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+      font-size: 15px;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0 40px;
+      text-align: center;
+      background: linear-gradient(180deg, #1a1510 0%, var(--bg) 100%);
+    }
+    header h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    header .updated {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .apps-badge {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .apps-badge span {
+      background: var(--accent-dim);
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--accent);
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+    .toc-title {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .toc ol { list-style: none; counter-reset: toc; }
+    .toc ol li {
+      counter-increment: toc;
+      padding: 5px 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .toc ol li::before {
+      content: counter(toc) ". ";
+      color: var(--accent);
+      font-weight: 500;
+    }
+    section { margin-bottom: 52px; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 13px;
+      color: var(--accent);
+      min-width: 24px;
+    }
+    h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    p { color: var(--text); margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    th {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 500;
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--border);
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+    td {
+      padding: 11px 16px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+    .highlight-box {
+      background: var(--accent-dim);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+    ul, ol { padding-left: 20px; margin: 10px 0; }
+    li { margin-bottom: 6px; font-size: 14px; color: var(--text); }
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 32px;
+    }
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-label {
+      color: var(--text-muted);
+      min-width: 160px;
+      font-size: 13px;
+    }
+    .contact-value { color: var(--text); }
+    footer {
+      text-align: center;
+      padding: 32px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>개인정보처리방침</h1>
+  <div class="updated">시행일: 2026년 3월 11일</div>
+  <div class="apps-badge">
+    <span>SORTE</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="toc">
+    <div class="toc-title">목차</div>
+    <ol>
+      <li>수집하는 개인정보 항목 및 수집 방법</li>
+      <li>개인정보의 수집 및 이용 목적</li>
+      <li>개인정보의 보유 및 이용 기간</li>
+      <li>개인정보의 제3자 제공</li>
+      <li>개인정보 처리 위탁</li>
+      <li>이용자의 권리와 행사 방법</li>
+      <li>개인정보의 파기</li>
+      <li>개인정보 보호책임자</li>
+      <li>고지의 의무</li>
+    </ol>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>수집하는 개인정보 항목 및 수집 방법</h2>
+    </div>
+    <p>미스티레인(이하 "회사")은 SORTE 서비스 제공을 위해 아래와 같이 최소한의 개인정보를 수집합니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>수집 항목</th>
+          <th>필수 여부</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>비회원 이용</td>
+          <td>기기 고유 식별자 (UUID)</td>
+          <td>자동 수집</td>
+        </tr>
+        <tr>
+          <td>로컬 로그인</td>
+          <td>이메일 주소, 비밀번호</td>
+          <td>필수</td>
+        </tr>
+        <tr>
+          <td>푸시 알림</td>
+          <td>FCM 토큰</td>
+          <td>선택</td>
+        </tr>
+        <tr>
+          <td>서비스 이용</td>
+          <td>기기 정보 (OS, 기기 모델, 앱 버전), 서비스 이용 기록</td>
+          <td>자동 수집</td>
+        </tr>
+        <tr>
+          <td>결제</td>
+          <td>Google Play 결제 정보 (Google LLC가 처리, 회사는 저장하지 않음)</td>
+          <td>결제 시</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      SORTE는 별도 회원가입 없이 기기 고유 UUID를 통해 비회원으로 서비스를 이용할 수 있습니다. 로컬 로그인 시 입력하는 이메일은 서비스 이용을 위한 식별자로만 사용됩니다.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>개인정보의 수집 및 이용 목적</h2>
+    </div>
+    <ul>
+      <li>회원 식별 및 서비스 이용 관리</li>
+      <li>푸시 알림(FCM) 발송</li>
+      <li>유료 서비스 제공 및 결제 처리</li>
+      <li>서비스 오류 및 장애 처리</li>
+      <li>불법·부정 이용 방지</li>
+      <li>신규 서비스 개발 및 서비스 개선</li>
+      <li>법령상 의무 이행</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>개인정보의 보유 및 이용 기간</h2>
+    </div>
+    <p>회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 관련 법령에 의해 보존할 필요가 있는 경우에는 아래와 같이 보관합니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>보유 항목</th>
+          <th>보유 근거</th>
+          <th>보유 기간</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>계약 또는 청약철회 등에 관한 기록</td>
+          <td>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+          <td>5년</td>
+        </tr>
+        <tr>
+          <td>대금결제 및 재화 공급에 관한 기록</td>
+          <td>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+          <td>5년</td>
+        </tr>
+        <tr>
+          <td>소비자 불만 또는 분쟁처리에 관한 기록</td>
+          <td>전자상거래 등에서의 소비자 보호에 관한 법률</td>
+          <td>3년</td>
+        </tr>
+        <tr>
+          <td>서비스 이용 기록, 접속 로그</td>
+          <td>통신비밀보호법</td>
+          <td>3개월</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>개인정보의 제3자 제공</h2>
+    </div>
+    <p>회사는 이용자의 개인정보를 수집·이용 목적 이외에 외부에 제공하지 않습니다. 단, 아래의 경우에는 예외로 합니다.</p>
+    <ul>
+      <li>이용자가 사전에 동의한 경우</li>
+      <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>개인정보 처리 위탁</h2>
+    </div>
+    <p>회사는 원활한 서비스 제공을 위해 아래와 같이 개인정보 처리 업무를 외부 전문 업체에 위탁하여 운영하고 있습니다.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>수탁 업체</th>
+          <th>위탁 업무 내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Google Firebase (Google LLC)</td>
+          <td>푸시 알림(FCM) 발송, 앱 분석</td>
+        </tr>
+        <tr>
+          <td>Google AdMob (Google LLC)</td>
+          <td>광고 서비스 제공</td>
+        </tr>
+        <tr>
+          <td>Google Play (Google LLC)</td>
+          <td>인앱 결제 처리</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>이용자의 권리와 행사 방법</h2>
+    </div>
+    <p>이용자는 언제든지 아래 권리를 행사할 수 있습니다.</p>
+    <ul>
+      <li>개인정보 열람 요청</li>
+      <li>개인정보 정정·삭제 요청</li>
+      <li>개인정보 처리 정지 요청</li>
+      <li>회원 탈퇴 (앱 내 탈퇴 기능 또는 이메일 요청)</li>
+    </ul>
+    <p>권리 행사는 아래 개인정보 보호책임자에게 이메일로 요청하시면 지체 없이 처리합니다.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>개인정보의 파기</h2>
+    </div>
+    <p>회사는 개인정보 보유 기간의 경과, 처리 목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.</p>
+    <ul>
+      <li><strong>전자적 파일 형태:</strong> 복원이 불가능한 방법으로 영구 삭제</li>
+      <li><strong>종이 문서:</strong> 분쇄기로 분쇄하거나 소각</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>개인정보 보호책임자</h2>
+    </div>
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="contact-label">상호명</span>
+        <span class="contact-value">미스티레인</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">대표자</span>
+        <span class="contact-value">백승민</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">사업자등록번호</span>
+        <span class="contact-value">297-22-01959</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">통신판매업 신고번호</span>
+        <span class="contact-value">2025-서울금천-0490</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">주소</span>
+        <span class="contact-value">서울특별시 금천구 탑골로8길 16(시흥동), 08656</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">문의 이메일</span>
+        <span class="contact-value">app.jhstudio@gmail.com</span>
+      </div>
+    </div>
+    <p style="margin-top:16px; font-size:14px; color:var(--text-muted);">
+      개인정보 관련 문의, 열람 청구, 정정·삭제 요청 등은 위 이메일로 연락주시면 확인 후 처리해 드립니다.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>고지의 의무</h2>
+    </div>
+    <p>현 개인정보처리방침의 내용이 변경될 경우 시행 7일 전부터 앱 공지사항 또는 이메일을 통해 고지합니다. 다만, 이용자 권리의 중요한 변경이 있을 경우에는 최소 30일 전에 고지합니다.</p>
+    <div class="highlight-box">
+      본 방침은 2026년 3월 11일부터 시행됩니다.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 미스티레인. All rights reserved.
+</footer>
+
+</body>
+</html>
